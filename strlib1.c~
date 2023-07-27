@@ -1,0 +1,28 @@
+#include <stdbool.h>
+
+
+static bool is_present(const char *str, char c)
+{
+	while (*str != '\0') {
+		if (*str == c) {
+			return true;
+		}
+		str++;
+	}
+	return false;
+}
+
+size_t _strcspn(const char *str1, const char *str2)
+{
+	size_t count = 0;
+
+	while (*str1 != '\0') {
+		if (is_present(str2, *str1)) {
+			break;
+		} else {
+			count++;
+			str1++;
+		}
+	}
+	return count;
+}
