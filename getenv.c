@@ -5,7 +5,7 @@ extern char **environ;
 
 char *_getenv(char *name)
 {
-        int l, i;
+        int l, i = 0;
 	l = _strlen(name);
 
         if (!environ || !name)
@@ -20,10 +20,11 @@ char *_getenv(char *name)
 }
 
 
-char **_getdir()
+char *_getdir()
 {
         char **list;
         char *pathcpy, *path;
+        int i;
 
         path = _getenv("PATH");
 	pathcpy = malloc((_strlen(path) + 1) * sizeof(char));
@@ -39,9 +40,11 @@ char **_getdir()
         if (pathcpy == NULL)
                 exit(-1);
 
-        list = create_tokens1(pathcpy);
+	
+//        list = create_tokens1(pathcpy);
 	free(pathcpy);
-        return (list);
+	//       return (list);
+	return(pathcpy);
 }
 
 /*char *_path()
@@ -62,7 +65,7 @@ char **_getdir()
         return (dir);
 	}*/
 
-char *_bin()
+/*char *_bin()
 {
 	int i;
 	char *dir;
@@ -80,7 +83,7 @@ char *_bin()
 	}
 	free(ges);
         return (dir);
-}
+	}*/
 
 char* find_in_path(char* command)
 {
@@ -134,3 +137,25 @@ char* find_in_path(char* command)
 	free(path_copy);
 	return NULL;
 }
+
+/*int main()
+{
+	char *command = "pwd";
+	char *fp = find_in_path(command);
+	printf("%s\n", fp);
+	return (0);
+
+	}
+char *getenvv()
+{
+    unsigned int i;
+    char *l;
+
+    while (environ[i] != NULL)
+    {
+	    l[i] = environ[i];
+	    i++;
+    }
+    return (l);
+}
+*/
