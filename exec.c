@@ -26,7 +26,6 @@ void execute_cmd(char **args)
 		else
 		{
 			full_path = find_in_path(args[0]);
-			printf("%s\n", full_path);
 			if (full_path != NULL)
 			{
 				if (execve(full_path, args, environ) == -1)

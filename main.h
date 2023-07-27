@@ -11,9 +11,9 @@
 #include <sys/wait.h>
 #include <dirent.h>
 #include <stddef.h>
+#include <errno.h>
 
 int main(int argc, char *argv[]);
-//int main();
 int _strlen(char *s);
 char *_strcpy(char *dest, char *src);
 int _putchar(char c);

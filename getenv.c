@@ -22,9 +22,8 @@ char *_getenv(char *name)
 
 char *_getdir()
 {
-        char **list;
+
         char *pathcpy, *path;
-        int i;
 
         path = _getenv("PATH");
 	pathcpy = malloc((_strlen(path) + 1) * sizeof(char));
@@ -40,10 +39,8 @@ char *_getdir()
         if (pathcpy == NULL)
                 exit(-1);
 
-	
-//        list = create_tokens1(pathcpy);
 	free(pathcpy);
-	//       return (list);
+
 	return(pathcpy);
 }
 
