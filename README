@@ -1,1 +1,6 @@
 Simple shell project
+
+Is a stripped-down version of the shell and thus may be missing some features.
+
+Requirements:
+<command> <parameters>
