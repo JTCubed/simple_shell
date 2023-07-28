@@ -30,15 +30,16 @@ int _strncmp(char *dest, char *src, int n)
 
         while (n--)
         {
-                if (src == dest)
-                        return (0);
-                else if(src < dest)
+                if (*src == *dest)
+		{
+			dest++;
+			src++;
+		}
+                else if(*src < *dest)
                         return (-1);
                 else
                         return (1);
 
-                dest++;
-                src++;
         }
         return (0);
 }

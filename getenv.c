@@ -12,7 +12,7 @@ char *_getenv(char *name)
                 return (NULL);
         while (environ[i])
         {
-                if (strncmp(name, environ[i], l) == 0 && environ[i][l] == '=')
+                if (_strncmp(name, environ[i], l) == 0 && environ[i][l] == '=')
                         return (&environ[i][l + 1]);
                 i++;
         }
@@ -97,7 +97,7 @@ char* find_in_path(char* command)
 		return NULL;
 	}
 
-	path_copy = strdup(path);
+	path_copy = _strdup(path);
 	dir = strtok(path_copy, ":");
 
 	while (dir != NULL)

@@ -7,7 +7,7 @@ int _isdir(char *name)
 
 	dir = "/";
 
-	if (strncmp(dir, name, 1) == 0)
+	if (_strncmp(dir, name, 1) == 0)
 	{
 		return (0);
 	}

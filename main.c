@@ -12,11 +12,11 @@ int main(int argc, char **argv)
 	ssize_t charsread;
 	char **argv2;
 	char *prompt;
-	int cd, i;
+	int cd;
 
 	(void)argc;
 	n = 0;
-	prompt = "$ ";
+	prompt = "($) ";
 	lineptr = NULL;
 
 	while (1)
@@ -40,15 +40,15 @@ int main(int argc, char **argv)
 		}
 
 		linecpy = _strcpy(malloc(sizeof(char) * (_strlen(lineptr) + 1)), lineptr);
-		lncpy = strdup(lineptr);
+		lncpy = _strdup(lineptr);
 		lineptr[_strcspn(lineptr, "\n")] = 0;
 		argv = create_tokens(lineptr);
 		argv2 = create_tokens(lncpy);
-		i = _strlen(argv2[1]);
+
 		if (_strcmp(argv2[0], "cd") == 0)
 		{
-			printf("sding %s\n%d\n", argv2[1], i);
-			cd = chdir(argv2[1]);
+/*			printf("sding %s\n%d\n", argv2[1], i);
+ */			cd = chdir(argv2[1]);
 			if (cd == -1)
 				printf("%s\n", strerror(errno));
 		}
