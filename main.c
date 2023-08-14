@@ -55,7 +55,7 @@ int main(int argc, char **argv)
 /*			printf("sding %s\n%d\n", argv2[1], i);
  */			cd = chdir(argv2[1]);
 			if (cd == -1)
-				printf("%s\n", strerror(errno));
+				perror("No such directory");
 		}
 		else if (_strcmp(argv2[0], "exit") == 10)
 		{

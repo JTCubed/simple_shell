@@ -31,8 +31,8 @@ char *_getdir()
 
         if (path == NULL)
         {
-                printf("PATH error");
-                exit(-1);
+                perror("PATH error");
+                exit(1);
         }
 
 
@@ -44,43 +44,6 @@ char *_getdir()
 	return(pathcpy);
 }
 
-/*char *_path()
-{
-        char **l;
-        char *dir;
-        int i;
-
-        l = _getdir();
-        for (i = 0; l[i] != NULL; i++)
-        {
-                if (strcmp("/bin", l[i]) == 0)
-                {
-                        dir = l[i];
-                }
-        }
-
-        return (dir);
-	}*/
-
-/*char *_bin()
-{
-	int i;
-	char *dir;
-	char **ges;
-
-	ges = _getdir();
-	dir = malloc(sizeof(char) * 5);
-
-	for (i = 0; ges[i] != NULL; i++)
-	{
-		if (_strcmp("/bin", ges[i]) == 10)
-		{
-			dir = ges[i];
-		}
-	}
-	free(ges);
-        return (dir);
-	}*/
 
 char* find_in_path(char* command)
 {
@@ -93,7 +56,7 @@ char* find_in_path(char* command)
 	path = _getenv("PATH");
 	if (path == NULL)
 	{
-		fprintf(stderr, "PATH environment variable not set\n");
+		perror("PATH environment variable not set\n");
 		return NULL;
 	}
 
@@ -134,25 +97,3 @@ char* find_in_path(char* command)
 	free(path_copy);
 	return NULL;
 }
-
-/*int main()
-{
-	char *command = "pwd";
-	char *fp = find_in_path(command);
-	printf("%s\n", fp);
-	return (0);
-
-	}
-char *getenvv()
-{
-    unsigned int i;
-    char *l;
-
-    while (environ[i] != NULL)
-    {
-	    l[i] = environ[i];
-	    i++;
-    }
-    return (l);
-}
-*/
