@@ -39,11 +39,5 @@ void execute_cmd(char **args)
 	{
 		int status;
 		waitpid(pid, &status, 0);
-
-		if (WIFEXITED(status))
-		{
-			int exit_status = WEXITSTATUS(status);
-/**			printf("Child exited with status: %d\n", exit_status);
- */		}
 	}
 }
