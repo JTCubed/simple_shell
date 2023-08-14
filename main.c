@@ -47,10 +47,13 @@ int main(int argc, char **argv)
 
 		if (_strcmp(argv2[0], "cd") == 0)
 		{
+			if (argv2[1] == NULL)
+				{
+					chdir(_getenv("HOME"));
+					return (1);
+				}
 /*			printf("sding %s\n%d\n", argv2[1], i);
  */			cd = chdir(argv2[1]);
-			if (cd == 0)
-				return (0);
 			if (cd == -1)
 				printf("%s\n", strerror(errno));
 		}
@@ -65,7 +68,6 @@ int main(int argc, char **argv)
 		else
 		{
 			execute_cmd(argv);
-			return (0);
 		}
 		free(argv);
 		free(linecpy);
