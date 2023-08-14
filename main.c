@@ -49,6 +49,8 @@ int main(int argc, char **argv)
 		{
 /*			printf("sding %s\n%d\n", argv2[1], i);
  */			cd = chdir(argv2[1]);
+			if (cd == 0)
+				return (0);
 			if (cd == -1)
 				printf("%s\n", strerror(errno));
 		}
@@ -63,6 +65,7 @@ int main(int argc, char **argv)
 		else
 		{
 			execute_cmd(argv);
+			return (0);
 		}
 		free(argv);
 		free(linecpy);
