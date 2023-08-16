@@ -12,16 +12,19 @@ int main(int argc, char **argv)
 	ssize_t charsread;
 	char **argv2;
 	char *prompt;
-	int cd;
+	int cd, p;
 
 	(void)argc;
 	n = 0;
+	p =0;
 	prompt = "($) ";
 	lineptr = NULL;
 
 	while (1)
 	{
-		write(STDOUT_FILENO, prompt, _strlen(prompt));
+		if (p == 0)
+			write(STDOUT_FILENO, prompt, _strlen(prompt));
+		p = 0;
 		charsread = getline(&lineptr, &n, stdin);
 
 		if (charsread == -1)
