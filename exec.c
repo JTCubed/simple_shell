@@ -6,6 +6,8 @@ void execute_cmd(char **args)
 {
 	pid_t pid;
 	char *full_path;
+	char *e = "sh: 1: ";
+	char *errfil = ": not found\n";
 	if (args[0] == NULL)
 	{
 		return;
@@ -22,7 +24,9 @@ void execute_cmd(char **args)
 	if (pid == 0)
 	{
 		if (args[0][0] == '/')
+		{
 			execve(args[0], args, environ);
+		}
 		else
 		{
 			full_path = find_in_path(args[0]);
@@ -33,7 +37,9 @@ void execute_cmd(char **args)
 				free(full_path);
 			}
 		}
-		perror("Command execution failed");
+		write(STDERR_FILENO, e, _strlen(e));
+		write(STDERR_FILENO, args[0], _strlen(args[0]));
+		write(STDERR_FILENO, errfil, _strlen(errfil));
 		exit(EXIT_FAILURE);
 	} else
 	{
