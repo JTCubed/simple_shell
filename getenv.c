@@ -82,7 +82,7 @@ char* find_in_path(char* command)
 			}
 			if (strcmp(dp->d_name, command) == 0)
 			{
-				char* full_path = malloc(_strlen(dir) + strlen(command) + 2);
+				char* full_path = malloc(_strlen(dir) + _strlen(command) + 2);
 				_strcpy(full_path, dir);
 				_strcat(full_path, "/");
 				_strcat(full_path, command);
