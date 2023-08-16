@@ -17,7 +17,7 @@ int main(int argc, char **argv)
 	(void)argc;
 	n = 0;
 	p =0;
-	prompt = "($) ";
+	prompt = " ";
 	lineptr = NULL;
 
 	while (1)
